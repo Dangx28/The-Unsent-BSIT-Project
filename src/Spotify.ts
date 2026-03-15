@@ -1,5 +1,5 @@
 const CLIENT_ID = "58e24ebd54ac4a748fcb861094088141";
-const REDIRECT_URI = "http://127.0.0.1:5173/create";
+const REDIRECT_URI = "https://the-unsent-bsit-project.vercel.app/create";
 
 const generateRandomString = (length: number) => {
   const chars =
