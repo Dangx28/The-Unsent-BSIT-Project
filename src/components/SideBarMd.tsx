@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 const SideBarMd = ({ className }: { className?: string }) => {
   return (
