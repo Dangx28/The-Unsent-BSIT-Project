@@ -2,7 +2,7 @@ import { useState } from "react";
 import menu from "../assets/images/menu.png";
 import SideBar from "../components/SideBar.tsx";
 import { AnimatePresence, motion } from "motion/react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import SideBarMd from "../components/SideBarMd.tsx";
 
 const MainLayout = () => {
