@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Brawler:wght@400;700&family=Faster+One&family=Gochi+Hand&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Scope+One&family=Square+Peg&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Juana";
+  src: url("./assets/fonts/Juana-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lucida Sans Typewriter Regular';
+  src: url('https://static.wfonts.com/data/2014/12/30/lucida-sans-typewriter/Lucida Sans Typewriter Regular.ttf') format('ttf');
+  font-display: swap;
+}
+
+@theme {
+  --font-juana: "Juana", serif;
+  --font-gochi: "Gochi Hand", serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-faster: "Faster One", serif;
+  --font-square: "Square Peg", serif;
+  --font-scope: "Scope One", serif;
+  --font-arima: "Arima", serif;
+  --font-lucida: "Lucida Sans Typewriter Regular", serif;
+  --font-brawler: "Brawler", serif;
+}
