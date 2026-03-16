@@ -18,23 +18,27 @@ const Create = () => {
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getToken();
+
+      const saved = localStorage.getItem("formData");
+      if (saved) {
+        const { section, name, message, search, mood } = JSON.parse(saved);
+        setSection(section);
+        setName(name);
+        setMessage(message);
+        setSearch(search);
+        setMood(mood);
+      }
+
       if (token) {
         setToken(token);
-        const saved = localStorage.getItem("formData");
 
         if (saved) {
-          const { section, name, message, search, mood } = JSON.parse(saved);
-          setSection(section);
-          setName(name);
-          setMessage(message);
-          setSearch(search);
-          setMood(mood);
-          localStorage.removeItem("formData");
+          const search = JSON.parse(saved);
 
-        const results = await searchSong(token, search);
-        setSongResults(results);
-        setSong(results[0]?.name);
-        setButtonPop(true);
+          const results = await searchSong(token, search);
+          setSongResults(results);
+          setSong(results[0]?.name);
+          setButtonPop(true);
         }
       }
     };
@@ -66,7 +70,8 @@ const Create = () => {
     });
 
     alert("Your anonymous message has been submitted!");
-    
+    localStorage.removeItem("formData");
+    window.location.href = "/home";
   };
 
   const handleSongSearch = async () => {
@@ -123,7 +128,7 @@ const Create = () => {
                 <section className="w-full">
                   <p>Who's receiving their message?</p>
                   <input
-                  maxLength={15}
+                    maxLength={15}
                     required
                     type="text"
                     value={name}

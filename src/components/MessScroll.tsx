@@ -43,7 +43,7 @@ const MessScroll = () => {
 
   return (
     <section
-      className="pb-5 flex flex-col gap-5 overflow-y-auto  h-100 [&::-webkit-scrollbar]:w-2
+      className="pb-5 flex flex-col gap-5 overflow-y-auto h-100 [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:bg-green-200
   [&::-webkit-scrollbar-thumb]:bg-green-400"
     >

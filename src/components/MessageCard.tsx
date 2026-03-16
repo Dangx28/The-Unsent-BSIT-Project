@@ -92,11 +92,11 @@ const MessageCard = forwardRef(({ color, size, section, receiver, date, message,
           color: theme.textColor,
           fontSize: sizee.size1,
         }}
-        className="overflow-hidden shadow-lg shadow-black/50 max-w-2xl w-full mx-auto text-white gap-2 rounded-full p-3 font-playfair flex flex-col place-items-center"
+        className="shadow-lg shadow-black/50 max-w-2xl w-full mx-auto text-white gap-2 rounded-full p-3 font-playfair flex flex-col place-items-center"
       >
         <section
           style={{ color: theme.textColor2 }}
-          className="text-center flex flex-row mx-auto justify-between w-full pl-10 pr-10 gap-2"
+          className=" text-center flex-wrap flex flex-row mx-auto justify-between w-full pl-10 pr-10 gap-2"
         >
           <section className="flex flex-row gap-2">
             <section
