@@ -18,8 +18,10 @@ const Create = () => {
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getToken();
-
+      const savedToken = localStorage.getItem("spotifyToken");
       const saved = localStorage.getItem("formData");
+      if (savedToken) setToken(savedToken);
+
       if (saved) {
         const { section, name, message, search, mood } = JSON.parse(saved);
         setSection(section);
@@ -31,6 +33,8 @@ const Create = () => {
 
       if (token) {
         setToken(token);
+        localStorage.setItem("spotifyToken", token);
+        window.history.replaceState({}, document.title, "/create");
 
         if (saved) {
           const search = JSON.parse(saved);
