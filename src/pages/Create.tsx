@@ -6,7 +6,7 @@ import { loginSpotify, getToken, searchSong } from "../Spotify.ts";
 
 const Create = () => {
   const [buttonPop, setButtonPop] = useState(false);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState<string | null>(null);
   const [section, setSection] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -169,15 +169,36 @@ const Create = () => {
                   }}
                   className="w-full bg-white pl-2 pr-2 pt-1 pb-1"
                 ></input>
-                <button
-                  type="button"
-                  className="bg-white p-2 rounded-lg hover:bg-white/50 border-2 border-transparent active:border-black/50"
-                  onClick={() => {
-                    handleSongSearch();
-                  }}
-                >
-                  Search
-                </button>
+                {!token ? (
+                  <button
+                    type="button"
+                    className="bg-[#1DB954] text-white font-bold p-2 rounded-lg hover:bg-[#1ed760] transition-colors"
+                    onClick={async () => {
+                      // Save the current form state so it's there when they get back
+                      localStorage.setItem(
+                        "formData",
+                        JSON.stringify({
+                          section,
+                          name,
+                          message,
+                          search,
+                          mood,
+                        }),
+                      );
+                      await loginSpotify();
+                    }}
+                  >
+                    Connect Spotify
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="bg-white p-2 rounded-lg hover:bg-white/50 border-2 border-transparent active:border-black/50"
+                    onClick={handleSongSearch}
+                  >
+                    Search
+                  </button>
+                )}
               </section>
               {buttonPop && (
                 <select
