@@ -69,7 +69,7 @@ export const searchSong = async (token: string, query: string) => {
   } catch (error: any) {
     // This will catch the ad-blocker "Failed to fetch" error
     alert(
-      "Search failed. This is likely blocked by your browser's privacy settings or ad-blocker.",
+      "Search failed. Your browser's ad blocker or privacy settings might have prevented it from doing so. Please use a different browser.",
     );
     console.error(error);
     return [];
