@@ -57,12 +57,21 @@ export const getToken = async () => {
 };
 
 export const searchSong = async (token: string, query: string) => {
-  const response = await fetch(
-    `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=5`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    },
-  );
-  const data = await response.json();
-  return data.tracks.items;
+  try {
+    const response = await fetch(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=5`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
+    const data = await response.json();
+    return data.tracks.items;
+  } catch (error: any) {
+    // This will catch the ad-blocker "Failed to fetch" error
+    alert(
+      "Search failed. This is likely blocked by your browser's privacy settings or ad-blocker.",
+    );
+    console.error(error);
+    return [];
+  }
 };
