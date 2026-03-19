@@ -1,5 +1,5 @@
 const CLIENT_ID = "58e24ebd54ac4a748fcb861094088141";
-const REDIRECT_URI = "https://the-unsent-bsit-project.vercel.app/create";
+const REDIRECT_URI = "http://127.0.0.1:5173/create";
 
 const generateRandomString = (length: number) => {
   const chars =
@@ -60,19 +60,21 @@ export const getToken = async () => {
 
 export const searchSong = async (token: string, query: string) => {
   try {
-    const response = await fetch("/api/search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, token }),
-    });
+    const response = await fetch(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&limit=5&type=track`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
     const data = await response.json();
 
     if (!response.ok || !data.tracks) return null;
 
-    return data.tracks.items ?? null;
+    return data.tracks.items;
   } catch (error: any) {
+    // This will catch the ad-blocker "Failed to fetch" error
     alert(
-      "Search failed. Do NOT use an adblocker browser as it blocks the spotify queries.",
+      "Search failed. Spotify can't search because of the browser you are using. USE a different browser.",
     );
     console.error(error);
     return [];
