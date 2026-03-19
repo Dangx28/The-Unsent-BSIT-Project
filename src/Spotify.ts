@@ -61,18 +61,15 @@ export const getToken = async () => {
 export const searchSong = async (token: string, query: string) => {
   try {
     const response = await fetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&limit=5&type=track`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      },
+      `/api/spotify?query=${encodeURIComponent(query)}&token=${token}`,
     );
     const data = await response.json();
 
     if (!response.ok || !data.tracks) return null;
 
-    return data.tracks.items;
+    return data.tracks.items ?? null;
   } catch (error: any) {
-    // This will catch the ad-blocker "Failed to fetch" error
+
     alert(
       "Search failed. Spotify can't search because of the browser you are using. USE a different browser.",
     );
