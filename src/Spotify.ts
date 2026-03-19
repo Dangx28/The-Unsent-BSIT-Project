@@ -74,7 +74,7 @@ export const searchSong = async (token: string, query: string) => {
   } catch (error: any) {
     // This will catch the ad-blocker "Failed to fetch" error
     alert(
-      "Search failed. Spotify can't search because of the browser you are using. USE a different browser.",
+      "Search failed due to browser blocking Spotify queries. USE a different browser. You can still submit your message but it will have no song.",
     );
     console.error(error);
     return [];

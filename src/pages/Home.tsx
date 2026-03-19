@@ -55,7 +55,7 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="pl-5 pr-5 md:pl-20 md:pr-20 pt-10 pb-10 overflow-y-scroll w-full h-screen gap-5 flex flex-col place-items-center"
+        className="pl-5 pr-5 md:pl-20 md:pr-20 pt-20 md:pt-10 pb-10 overflow-y-scroll w-full h-screen gap-5 flex flex-col place-items-center"
       >
         <p className="font-playfair text-3xl md:text-5xl text-center">
           <strong>

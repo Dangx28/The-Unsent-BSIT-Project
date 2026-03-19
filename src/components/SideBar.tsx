@@ -1,9 +1,16 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-const SideBar = ({ className }: { className?: string }) => {
+const SideBar = ({
+  className,
+  hideSidebar,
+}: {
+  className?: string;
+  hideSidebar?: () => void;
+}) => {
   return (
     <section className={className}>
       <motion.section
+        id="sidebar"
         initial={{ x: -300 }}
         animate={{
           x: 0,
@@ -13,10 +20,11 @@ const SideBar = ({ className }: { className?: string }) => {
           duration: 0.5,
           ease: ["easeOut"],
         }}
-        exit={{ x: -300 }}
+        exit={{ x: -400 }}
         className="pl-2 pr-2 select-none gap-8 font-playfair font-bold flex flex-col place-items-center bg-[#57DE80] fixed h-full w-1/2 z-1 pt-20 border-r-2"
       >
         <Link
+          onClick={hideSidebar}
           to="/home"
           className="h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex flex-row w-full pl-5 pr-5 gap-2"
         >
@@ -43,6 +51,7 @@ const SideBar = ({ className }: { className?: string }) => {
           </section>
         </Link>
         <Link
+          onClick={hideSidebar}
           to="/create"
           className="h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex-row w-full pl-5 pr-5 gap-2"
         >
@@ -74,6 +83,7 @@ const SideBar = ({ className }: { className?: string }) => {
           </section>
         </Link>
         <Link
+          onClick={hideSidebar}
           to="/browse"
           className="h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex-row w-full pl-5 pr-5 gap-2"
         >
@@ -99,6 +109,7 @@ const SideBar = ({ className }: { className?: string }) => {
           </section>
         </Link>
         <Link
+          onClick={hideSidebar}
           to="/"
           className="h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex-row w-full pl-5 pr-5 gap-2"
         >
@@ -125,6 +136,7 @@ const SideBar = ({ className }: { className?: string }) => {
           </section>
         </Link>
         <Link
+          onClick={hideSidebar}
           to="/credits"
           className="h-10 border-2 border-transparent hover:border-green-600 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex h-10 border-2 border-transparent hover:border-green-500 place-items-center rounded-full hover:bg-green-400 cursor-pointer flex-row w-full pl-5 pr-5 gap-2"
         >

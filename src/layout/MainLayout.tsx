@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import menu from "../assets/images/menu.png";
 import SideBar from "../components/SideBar.tsx";
 import { AnimatePresence, motion } from "motion/react";
@@ -8,10 +8,25 @@ import SideBarMd from "../components/SideBarMd.tsx";
 const MainLayout = () => {
   const [showSideBar, hideSideBar] = useState(false);
 
+  useEffect(() => {
+    const clickOutside = (e: MouseEvent) => {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar && !sidebar.contains(e.target as Node)) {
+        hideSideBar(false);
+      };
+    }
+
+    document.addEventListener("mousedown", clickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", clickOutside);
+    }
+  }, [])
+
   return (
     <>
       <AnimatePresence>
-        {showSideBar ? <SideBar className="md:hidden"></SideBar> : null}
+        {showSideBar ? <SideBar hideSidebar={() => {hideSideBar(false)}} className="md:hidden"></SideBar> : null}
       </AnimatePresence>
       <section className="bg-[#A8F2B5] mx-auto flex flex-col md:flex-row">
         <nav className="md:hidden fixed z-1 bg-[#57DE80] mx-auto w-full pl-2 pr-2 pt-1 pb-1 flex justify-between border-b-2">

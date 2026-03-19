@@ -11,7 +11,7 @@ const Create = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [search, setSearch] = useState("");
-  const [song, setSong] = useState("");
+  const [song, setSong] = useState("Untitled");
   const [songResults, setSongResults] = useState<any[]>([]);
   const [mood, setMood] = useState("");
 
@@ -63,11 +63,11 @@ const Create = () => {
         artist:
           songResults.find((results: any) => {
             return results.name === song;
-          })?.artists[0].name ?? "",
+          })?.artists[0].name ?? "No Author",
         image:
           songResults.find((results: any) => {
             return results.name === song;
-          })?.album.images[0].url ?? "",
+          })?.album.images[0].url ?? "https://tse4.mm.bing.net/th/id/OIP.1ZlEGmkVUO49rIa22mgrIgHaHb?rs=1&pid=ImgDetMain&o=7&rm=3",
         link:
           songResults.find((results: any) => {
             return results.name === song;
@@ -91,7 +91,7 @@ const Create = () => {
       const results = await searchSong(token, search);
       if (!results) throw new Error("Error)");
       setSongResults(results);
-      setSong(results[0]?.name ?? "")
+      setSong(results[0]?.name ?? "Untitled")
       setButtonPop(true);
     } catch {
       setToken("");
@@ -182,7 +182,7 @@ const Create = () => {
                     type="button"
                     className="bg-[#1DB954] text-white font-bold p-2 rounded-lg hover:bg-[#1ed760] transition-colors"
                     onClick={async () => {
-                      // Save the current form state so it's there when they get back
+                      
                       localStorage.setItem(
                         "formData",
                         JSON.stringify({
