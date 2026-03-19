@@ -52,6 +52,8 @@ export const getToken = async () => {
     }),
   });
 
+  window.history.replaceState({}, document.title, "/create");
+
   const data = await response.json();
   return data.access_token;
 };
@@ -65,6 +67,9 @@ export const searchSong = async (token: string, query: string) => {
       },
     );
     const data = await response.json();
+
+    if (!response.ok || !data.tracks) return null;
+
     return data.tracks.items;
   } catch (error: any) {
     // This will catch the ad-blocker "Failed to fetch" error

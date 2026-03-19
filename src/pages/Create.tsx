@@ -41,7 +41,7 @@ const Create = () => {
 
           const results = await searchSong(token, search);
           setSongResults(results);
-          setSong(results[0]?.name);
+          setSong(results[0]?.name ?? "");
           setButtonPop(true);
         }
       }
@@ -60,15 +60,18 @@ const Create = () => {
       mood,
       song: {
         name: song,
-        artist: songResults.find((results: any) => {
-          return results.name === song;
-        })?.artists[0].name,
-        image: songResults.find((results: any) => {
-          return results.name === song;
-        })?.album.images[0].url,
-        link: songResults.find((results: any) => {
-          return results.name === song;
-        })?.external_urls.spotify,
+        artist:
+          songResults.find((results: any) => {
+            return results.name === song;
+          })?.artists[0].name ?? "",
+        image:
+          songResults.find((results: any) => {
+            return results.name === song;
+          })?.album.images[0].url ?? "",
+        link:
+          songResults.find((results: any) => {
+            return results.name === song;
+          })?.external_urls.spotify ?? "",
       },
       createdAt: new Date(),
     });
@@ -78,18 +81,22 @@ const Create = () => {
     window.location.href = "/home";
   };
 
-  const handleSongSearch = async () => {
-    if (!token) {
-      localStorage.setItem(
-        "formData",
-        JSON.stringify({ section, name, message, search, mood }),
-      );
-      await loginSpotify();
-      return;
+  const handleSongSearch = () => {
+    songSearch();
+  };
+
+  const songSearch = async () => {
+    if (!token) return;
+    try {
+      const results = await searchSong(token, search);
+      if (!results) throw new Error("Error)");
+      setSongResults(results);
+      setSong(results[0]?.name ?? "")
+      setButtonPop(true);
+    } catch {
+      setToken("");
+      localStorage.removeItem("spotifyToken");
     }
-    const results = await searchSong(token, search);
-    setSongResults(results);
-    setButtonPop(true);
   };
 
   return (
@@ -161,6 +168,7 @@ const Create = () => {
               <section className="flex flex-row gap-5">
                 <input
                   required
+                  list="songs"
                   type="text"
                   placeholder="What song?"
                   value={search}
@@ -202,11 +210,10 @@ const Create = () => {
               </section>
               {buttonPop && (
                 <select
-                  required
-                  defaultValue={songResults[0]?.name}
                   onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                     setSong(e.target.value);
                   }}
+                  defaultValue={songResults[0]?.name ?? ""}
                   className="w-full bg-white pl-2 pr-2 pt-1 pb-1"
                 >
                   {songResults.map((track: any) => (
