@@ -115,7 +115,7 @@ const Create = () => {
             <section className="w-full">
               <section className="w-full gap-5 flex flex-row place-items-center">
                 <section className="w-full">
-                  <p>Which section's this from?</p>
+                  <p>Sender</p>
                   <select
                     required
                     value={section}
@@ -125,6 +125,7 @@ const Create = () => {
                     <option value="" disabled selected>
                       Section
                     </option>
+                    <option value="Anonymous">Anonymous</option>
                     <option value="BSIT 1-1">BSIT 1-1</option>
                     <option value="BSIT 1-2">BSIT 1-2</option>
                     <option value="BSIT 1-3">BSIT 1-3</option>
@@ -134,10 +135,27 @@ const Create = () => {
                     <option value="BSIT 1-7">BSIT 1-7</option>
                     <option value="BSIT 1-8">BSIT 1-8</option>
                     <option value="BSIT 1-9">BSIT 1-9</option>
+                    <option value="BSIT 2-1">BSIT 2-1</option>
+                    <option value="BSIT 2-2">BSIT 2-2</option>
+                    <option value="BSIT 2-3">BSIT 2-3</option>
+                    <option value="BSIT 2-4">BSIT 2-4</option>
+                    <option value="BSIT 2-5">BSIT 2-5</option>
+                    <option value="BSIT 2-6">BSIT 2-6</option>
+                    <option value="BSIT 2-7">BSIT 2-7</option>
+                    <option value="BSIT 3-1">BSIT 3-1</option>
+                    <option value="BSIT 3-2">BSIT 3-2</option>
+                    <option value="BSIT 3-3">BSIT 3-3</option>
+                    <option value="BSIT 3-4">BSIT 3-4</option>
+                    <option value="BSIT 3-5">BSIT 3-5</option>
+                    <option value="BSIT 4-1">BSIT 4-1</option>
+                    <option value="BSIT 4-2">BSIT 4-2</option>
+                    <option value="BSIT 4-3">BSIT 4-3</option>
+                    <option value="BSIT 4-OLD">BSIT 4-OLD</option>
+                    <option value="BSIT 4-IRREG">BSIT 4-IRREG</option>
                   </select>
                 </section>
                 <section className="w-full">
-                  <p>Who's receiving their message?</p>
+                  <p>Receiver</p>
                   <input
                     maxLength={15}
                     required
