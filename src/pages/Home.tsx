@@ -103,9 +103,9 @@ const Home = () => {
             header="Found a bug?"
             className="row-start-3 row-end-4 col-start-2 col-end-3"
           >
-            <MessButton text="Messenger"></MessButton>
+            <a href="https://www.facebook.com/cjdanga12342/"><MessButton text="Messenger"></MessButton></a>
             <br></br>
-            <GmailButton text="Gmail"></GmailButton>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cjdanga39@gmail.com&su=Hello&body=Hey!"><GmailButton text="Gmail"></GmailButton></a>
           </Card>
           <Card
             header="Messages"
