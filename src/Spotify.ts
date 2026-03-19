@@ -60,9 +60,11 @@ export const getToken = async () => {
 
 export const searchSong = async (token: string, query: string) => {
   try {
-    const response = await fetch(
-      `/api/search?query=${encodeURIComponent(query)}&token=${token}`,
-    );
+    const response = await fetch("/api/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query, token }),
+    });
     const data = await response.json();
 
     if (!response.ok || !data.tracks) return null;
