@@ -72,7 +72,7 @@ export const searchSong = async (token: string, query: string) => {
     return data.tracks.items ?? null;
   } catch (error: any) {
     alert(
-      "Search failed. Spotify can't search because of the browser you are using. USE a different browser.",
+      "Search failed. Do NOT use an adblocker browser as it blocks the spotify queries.",
     );
     console.error(error);
     return [];
