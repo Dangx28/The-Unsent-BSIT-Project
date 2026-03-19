@@ -61,7 +61,7 @@ export const getToken = async () => {
 export const searchSong = async (token: string, query: string) => {
   try {
     const response = await fetch(
-      `/api/spotify?query=${encodeURIComponent(query)}&token=${token}`,
+      `/api/search?query=${encodeURIComponent(query)}&token=${token}`,
     );
     const data = await response.json();
 
@@ -69,7 +69,6 @@ export const searchSong = async (token: string, query: string) => {
 
     return data.tracks.items ?? null;
   } catch (error: any) {
-
     alert(
       "Search failed. Spotify can't search because of the browser you are using. USE a different browser.",
     );
