@@ -26,10 +26,10 @@ const MainLayout = () => {
   return (
     <>
       <AnimatePresence>
-        {showSideBar ? <SideBar hideSidebar={() => {hideSideBar(false)}} className="md:hidden"></SideBar> : null}
+        {showSideBar ? <SideBar hideSidebar={() => {hideSideBar(false)}} className="md:hidden "></SideBar> : null}
       </AnimatePresence>
       <section className="bg-[#A8F2B5] mx-auto flex flex-col md:flex-row">
-        <nav className="md:hidden fixed z-1 bg-[#57DE80] mx-auto w-full pl-2 pr-2 pt-1 pb-1 flex justify-between border-b-2">
+        <nav className="md:hidden fixed z-50 bg-[#57DE80] mx-auto w-full pl-2 pr-2 pt-1 pb-1 flex justify-between border-b-2">
           <section className="font-gochi text-[#1D7446] text-base/5 text-shadow-md text-shadow-black/25">
             The Unsent <br></br> BSIT Project
           </section>

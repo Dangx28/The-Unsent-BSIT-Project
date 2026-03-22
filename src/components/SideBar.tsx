@@ -8,7 +8,7 @@ const SideBar = ({
   hideSidebar?: () => void;
 }) => {
   return (
-    <section className={className}>
+    <section className={`z-49 ${className}`}>
       <motion.section
         id="sidebar"
         initial={{ x: -300 }}
@@ -21,7 +21,7 @@ const SideBar = ({
           ease: ["easeOut"],
         }}
         exit={{ x: -400 }}
-        className="pl-2 pr-2 select-none gap-8 font-playfair font-bold flex flex-col place-items-center bg-[#57DE80] fixed h-full w-1/2 z-1 pt-20 border-r-2"
+        className="z-49 pl-2 pr-2 select-none gap-8 font-playfair font-bold flex flex-col place-items-center bg-[#57DE80] fixed h-full w-1/2 z-1 pt-20 border-r-2"
       >
         <Link
           onClick={hideSidebar}
