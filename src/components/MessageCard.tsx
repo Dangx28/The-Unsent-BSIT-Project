@@ -6,6 +6,9 @@ type Theme = {
   bg2?: string;
   textColor?: string;
   textColor2?: string;
+  emoji1?: string;
+  emoji2?: string;
+  emoji3?: string;
 };
 
 type Size = {
@@ -22,24 +25,37 @@ const themeDict: Record<string, Theme> = {
     textColor2: "white",
     bg: "#E75D89",
     bg2: "#FF0051",
+    emoji1: "❤️‍🔥",
+    emoji2: "🥰",
+    emoji3: "🫰",
   },
   green: {
     textColor: "black",
     textColor2: "white",
     bg: "#5DE774",
     bg2: "#2BAE0A",
+    emoji1: "🙏",
+    emoji2: "🤍",
+    emoji3: "🌸",
+
   },
   blue: {
     textColor: "white",
     textColor2: "white",
     bg: "#5D6FE7",
     bg2: "#0005FF",
+    emoji1: "🥹",
+    emoji2: "🤕",
+    emoji3: "💔",
   },
   gold: {
     textColor: "black",
     textColor2: "white",
     bg: "#FFBF51",
     bg2: "#FF8400",
+    emoji1: "🌈",
+    emoji2: "🤩",
+    emoji3: "🥳",
   },
 };
 
@@ -80,69 +96,99 @@ type MessageCardProps = {
   link?: string;
 };
 
-const MessageCard = forwardRef(({ color, size, section, receiver, date, message, image, song, author, link }: MessageCardProps, ref: any) => {
-  const theme = themeDict[color];
-  const sizee = sizes[size];
-  return (
-    <>
-      <section
-        ref={ref}
-        style={{
-          backgroundColor: theme.bg,
-          color: theme.textColor,
-          fontSize: sizee.size1,
-        }}
-        className="shadow-lg shadow-black/50 max-w-2xl w-full mx-auto text-white gap-2 rounded-full p-3 font-playfair flex flex-col place-items-center"
-      >
+const MessageCard = forwardRef(
+  (
+    {
+      color,
+      size,
+      section,
+      receiver,
+      date,
+      message,
+      image,
+      song,
+      author,
+      link,
+    }: MessageCardProps,
+    ref: any,
+  ) => {
+    const theme = themeDict[color];
+    const sizee = sizes[size];
+    return (
+      <>
         <section
-          style={{ color: theme.textColor2 }}
-          className=" text-center flex-wrap flex flex-row mx-auto justify-between w-full pl-10 pr-10 gap-2"
+          ref={ref}
+          style={{
+            backgroundColor: theme.bg,
+            color: theme.textColor,
+            fontSize: sizee.size1,
+          }}
+          className="relative shadow-lg shadow-black/50 max-w-2xl w-full mx-auto text-white gap-2 rounded-full p-3 font-playfair flex flex-col place-items-center"
         >
-          <section className="flex flex-row gap-2">
-            <section
-              style={{ backgroundColor: theme.bg2 }}
-              className="p-2 rounded-3xl"
-            >
-              <p className="">From: {section}</p>
-            </section>
-            <section
-              style={{ backgroundColor: theme.bg2 }}
-              className="p-2 rounded-3xl"
-            >
-              <p className="">To: {receiver}</p>
-            </section>
-          </section>
           <section
-            style={{ backgroundColor: theme.bg2 }}
-            className="p-2 rounded-3xl"
+            style={{ color: theme.textColor2 }}
+            className="z-2 text-center flex-wrap flex flex-row mx-auto justify-between w-full pl-10 pr-10 gap-2"
           >
-            <p>{date}</p>
+            <section className="flex flex-row gap-2">
+              <section
+                style={{ backgroundColor: theme.bg2 }}
+                className="p-2 rounded-3xl"
+              >
+                <p className="">From: {section}</p>
+              </section>
+              <section
+                style={{ backgroundColor: theme.bg2 }}
+                className="p-2 rounded-3xl"
+              >
+                <p className="">To: {receiver}</p>
+              </section>
+            </section>
+            <section
+              style={{ backgroundColor: theme.bg2 }}
+              className="p-2 rounded-3xl"
+            >
+              <p>{date}</p>
+            </section>
           </section>
-        </section>
-        <section className="w-full font-square">
-          <p
-            style={{ fontSize: sizee.size2 }}
-            className="text-center text-2xl tracking-wider break-words w-full"
-          >
-            {message}
-          </p>
-        </section>
-        <section className="flex justify-between w-full pl-10 pr-10 place-items-center">
-          <img
-            src={image}
-            className="object-cover content-center w-8 h-8 rounded-full"
-          ></img>
-          <section className="flex flex-col w-full pl-2 font-playfair">
-            <p style={{ fontSize: sizee.size3 }}>{song}</p>
-            <p style={{ fontSize: sizee.size4 }} className="opacity-60">
-              {author}
+          <section className="z-2 w-full font-square">
+            <p
+              style={{ fontSize: sizee.size2 }}
+              className="text-center text-2xl tracking-wider break-words w-full"
+            >
+              {message}
             </p>
           </section>
-          <a target="_blank" href={link}><img src={spotify} className="w-10"></img></a>
+          <section className="z-2 flex justify-between w-full pl-10 pr-10 place-items-center">
+            <img
+              src={image}
+              className="object-cover content-center w-8 h-8 rounded-full"
+            ></img>
+            <section className="flex flex-col w-full pl-2 font-playfair">
+              <p style={{ fontSize: sizee.size3 }}>{song}</p>
+              <p style={{ fontSize: sizee.size4 }} className="opacity-60">
+                {author}
+              </p>
+            </section>
+            <a target="_blank" href={link}>
+              <img src={spotify} className="w-10"></img>
+            </a>
+          </section>
+          <div className="z-1 overflow-hidden rounded-full absolute inset-0 flex justify-between items-end">
+            <div className="text-xl emoji-1">{theme.emoji1}</div>
+            <div className="text-xl emoji-2">{theme.emoji2}</div>
+            <div className="text-xl emoji-3">{theme.emoji1}</div>
+            <div className="text-xl emoji-4">{theme.emoji3}</div>
+            <div className="text-xl emoji-5">{theme.emoji2}</div>
+            <div className="text-xl emoji-6">{theme.emoji2}</div>
+            <div className="text-xl emoji-7">{theme.emoji1}</div>
+            <div className="text-xl emoji-8">{theme.emoji3}</div>
+            <div className="text-xl emoji-9">{theme.emoji2}</div>
+            <div className="text-xl emoji-10">{theme.emoji3}</div>
+          </div>
         </section>
-      </section>
-    </>
-  );
-});
+      </>
+    );
+  },
+);
 
 export default MessageCard;

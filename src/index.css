@@ -25,3 +25,80 @@
   --font-lucida: "Lucida Sans Typewriter Regular", serif;
   --font-brawler: "Brawler", serif;
 }
+
+.emoji-1 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 1s;
+}
+
+.emoji-2 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+.emoji-3 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 1.2s;
+}
+
+.emoji-4 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 0s;
+}
+
+.emoji-5 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 0.8s;
+}
+
+.emoji-6 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 1.5s;
+}
+
+.emoji-7 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 2s;
+}
+
+.emoji-8 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 0.4s;
+}
+
+.emoji-9 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 0s;
+}
+
+.emoji-10 {
+  animation: emojiAnim 4s linear infinite;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+@keyframes emojiAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-500%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-1000%);
+  }
+}

@@ -244,8 +244,10 @@ const Create = () => {
             </section>
             <section className="flex flex-col gap-2 mb-5 w-full">
               <p>What's the mood?</p>
-              <section className="flex flex-row justify-between pl-5 pr-5">
-                <section className="bg-pink-500 rounded-full w-8 h-8 flex justify-center items-center">
+              <section className="font-square tracking-wider font-bold flex flex-row justify-between pl-5 pr-5">
+                <section className="flex flex-col place-items-center">
+                  <label>Romantic</label>
+                  <section className="bg-pink-500 rounded-full w-8 h-8 flex justify-center items-center">
                   <input
                     required
                     type="radio"
@@ -257,7 +259,10 @@ const Create = () => {
                     className="accent-pink-500 w-6 h-6"
                   />
                 </section>
-                <section className="bg-yellow-500 rounded-full w-8 h-8 flex justify-center items-center">
+                </section>
+                <section className="flex flex-col place-items-center">
+                  <label>Happy</label>
+                  <section className="bg-yellow-500 rounded-full w-8 h-8 flex justify-center items-center">
                   <input
                     type="radio"
                     name="mood"
@@ -268,7 +273,10 @@ const Create = () => {
                     className="accent-yellow-500 w-6 h-6"
                   />
                 </section>
-                <section className="bg-blue-500 rounded-full w-8 h-8 flex justify-center items-center">
+                </section>
+                <section className="flex flex-col place-items-center">
+                  <label>Sad</label>
+                  <section className="bg-blue-500 rounded-full w-8 h-8 flex justify-center items-center">
                   <input
                     type="radio"
                     name="mood"
@@ -279,7 +287,10 @@ const Create = () => {
                     className="accent-blue-500 w-6 h-6"
                   />
                 </section>
-                <section className="bg-green-500 rounded-full w-8 h-8 flex justify-center items-center">
+                </section>
+                <section className="flex flex-col place-items-center">
+                  <label>Appreciation</label>
+                  <section className="bg-green-500 rounded-full w-8 h-8 flex justify-center items-center">
                   <input
                     type="radio"
                     name="mood"
@@ -289,6 +300,7 @@ const Create = () => {
                     }}
                     className="accent-green-500 w-6 h-6"
                   />
+                </section>
                 </section>
               </section>
             </section>
