@@ -98,6 +98,11 @@ const Home = () => {
               <br></br>Hello! This is my first website with a functional
               front-end and back-end. Plz let me know if there's a bug :D
             </p>
+            <br></br>
+            <p className="break-normal">
+              <strong>3/23/2026</strong>
+              <br></br>Added new moods in messages! (romantic, happy, sad, appreciation)
+            </p>
           </Card>
           <Card
             header="Found a bug?"
