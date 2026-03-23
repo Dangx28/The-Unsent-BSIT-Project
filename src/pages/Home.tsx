@@ -101,7 +101,8 @@ const Home = () => {
             <br></br>
             <p className="break-normal">
               <strong>3/23/2026</strong>
-              <br></br>Added new moods in messages! (romantic, happy, sad, appreciation)
+              <br></br>- Added new moods in messages! (romantic, happy, sad, appreciation)
+              <br></br>- Removed sender and added receiver's section for lesser redundancy.
             </p>
           </Card>
           <Card
