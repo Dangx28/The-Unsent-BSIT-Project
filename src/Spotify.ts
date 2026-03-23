@@ -61,7 +61,7 @@ export const getToken = async () => {
 export const searchSong = async (token: string, query: string) => {
   try {
     const response = await fetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&limit=5&type=track`,
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&limit=10&type=track`,
       {
         headers: { Authorization: `Bearer ${token}` },
       },

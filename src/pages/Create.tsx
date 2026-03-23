@@ -37,7 +37,7 @@ const Create = () => {
         window.history.replaceState({}, document.title, "/create");
 
         if (saved) {
-          const search = JSON.parse(saved);
+          const { search } = JSON.parse(saved);
 
           const results = await searchSong(token, search);
           setSongResults(results);
@@ -67,7 +67,8 @@ const Create = () => {
         image:
           songResults.find((results: any) => {
             return results.name === song;
-          })?.album.images[0].url ?? "https://tse4.mm.bing.net/th/id/OIP.1ZlEGmkVUO49rIa22mgrIgHaHb?rs=1&pid=ImgDetMain&o=7&rm=3",
+          })?.album.images[0].url ??
+          "https://tse4.mm.bing.net/th/id/OIP.1ZlEGmkVUO49rIa22mgrIgHaHb?rs=1&pid=ImgDetMain&o=7&rm=3",
         link:
           songResults.find((results: any) => {
             return results.name === song;
@@ -91,7 +92,7 @@ const Create = () => {
       const results = await searchSong(token, search);
       if (!results) throw new Error("Error)");
       setSongResults(results);
-      setSong(results[0]?.name ?? "Untitled")
+      setSong(results[0]?.name ?? "Untitled");
       setButtonPop(true);
     } catch {
       setToken("");
@@ -115,7 +116,20 @@ const Create = () => {
             <section className="w-full">
               <section className="w-full gap-5 flex flex-row place-items-center">
                 <section className="w-full">
-                  <p>Sender</p>
+                  <p>What's their name?</p>
+                  <input
+                    maxLength={15}
+                    required
+                    type="text"
+                    value={name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setName(e.target.value);
+                    }}
+                    className="pl-2 pr-2 pt-1 pb-1 bg-white w-full"
+                  ></input>
+                </section>
+                <section className="w-full">
+                  <p>What's their section?</p>
                   <select
                     required
                     value={section}
@@ -125,7 +139,6 @@ const Create = () => {
                     <option value="" disabled selected>
                       Section
                     </option>
-                    <option value="Anonymous">Anonymous</option>
                     <option value="BSIT 1-1">BSIT 1-1</option>
                     <option value="BSIT 1-2">BSIT 1-2</option>
                     <option value="BSIT 1-3">BSIT 1-3</option>
@@ -153,19 +166,6 @@ const Create = () => {
                     <option value="BSIT 4-OLD">BSIT 4-OLD</option>
                     <option value="BSIT 4-IRREG">BSIT 4-IRREG</option>
                   </select>
-                </section>
-                <section className="w-full">
-                  <p>Receiver</p>
-                  <input
-                    maxLength={15}
-                    required
-                    type="text"
-                    value={name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setName(e.target.value);
-                    }}
-                    className="pl-2 pr-2 pt-1 pb-1 bg-white w-full"
-                  ></input>
                 </section>
               </section>
             </section>
@@ -200,7 +200,6 @@ const Create = () => {
                     type="button"
                     className="bg-[#1DB954] text-white font-bold p-2 rounded-lg hover:bg-[#1ed760] transition-colors"
                     onClick={async () => {
-                      
                       localStorage.setItem(
                         "formData",
                         JSON.stringify({
@@ -248,59 +247,59 @@ const Create = () => {
                 <section className="flex flex-col place-items-center">
                   <label>Romantic</label>
                   <section className="bg-pink-500 rounded-full w-8 h-8 flex justify-center items-center">
-                  <input
-                    required
-                    type="radio"
-                    name="mood"
-                    value="pink"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setMood(e.target.value);
-                    }}
-                    className="accent-pink-500 w-6 h-6"
-                  />
-                </section>
+                    <input
+                      required
+                      type="radio"
+                      name="mood"
+                      value="pink"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setMood(e.target.value);
+                      }}
+                      className="accent-pink-500 w-6 h-6"
+                    />
+                  </section>
                 </section>
                 <section className="flex flex-col place-items-center">
                   <label>Happy</label>
                   <section className="bg-yellow-500 rounded-full w-8 h-8 flex justify-center items-center">
-                  <input
-                    type="radio"
-                    name="mood"
-                    value="gold"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setMood(e.target.value);
-                    }}
-                    className="accent-yellow-500 w-6 h-6"
-                  />
-                </section>
+                    <input
+                      type="radio"
+                      name="mood"
+                      value="gold"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setMood(e.target.value);
+                      }}
+                      className="accent-yellow-500 w-6 h-6"
+                    />
+                  </section>
                 </section>
                 <section className="flex flex-col place-items-center">
                   <label>Sad</label>
                   <section className="bg-blue-500 rounded-full w-8 h-8 flex justify-center items-center">
-                  <input
-                    type="radio"
-                    name="mood"
-                    value="blue"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setMood(e.target.value);
-                    }}
-                    className="accent-blue-500 w-6 h-6"
-                  />
-                </section>
+                    <input
+                      type="radio"
+                      name="mood"
+                      value="blue"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setMood(e.target.value);
+                      }}
+                      className="accent-blue-500 w-6 h-6"
+                    />
+                  </section>
                 </section>
                 <section className="flex flex-col place-items-center">
                   <label>Appreciation</label>
                   <section className="bg-green-500 rounded-full w-8 h-8 flex justify-center items-center">
-                  <input
-                    type="radio"
-                    name="mood"
-                    value="green"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setMood(e.target.value);
-                    }}
-                    className="accent-green-500 w-6 h-6"
-                  />
-                </section>
+                    <input
+                      type="radio"
+                      name="mood"
+                      value="green"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setMood(e.target.value);
+                      }}
+                      className="accent-green-500 w-6 h-6"
+                    />
+                  </section>
                 </section>
               </section>
             </section>

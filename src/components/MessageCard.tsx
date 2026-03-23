@@ -130,17 +130,11 @@ const MessageCard = forwardRef(
             className="z-2 text-center flex-wrap flex flex-row mx-auto justify-between w-full pl-10 pr-10 gap-2"
           >
             <section className="flex flex-row gap-2">
-              <section
+                            <section
                 style={{ backgroundColor: theme.bg2 }}
                 className="p-2 rounded-3xl"
               >
-                <p className="">From: {section}</p>
-              </section>
-              <section
-                style={{ backgroundColor: theme.bg2 }}
-                className="p-2 rounded-3xl"
-              >
-                <p className="">To: {receiver}</p>
+                <p className="">To: {receiver}, {section}</p>
               </section>
             </section>
             <section
