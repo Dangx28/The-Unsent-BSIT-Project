@@ -75,7 +75,7 @@ const About = () => {
           <MotionMC
             initial={{ scale: 0, rotate: 20 }}
             whileInView={{ scale: 1, rotate: 0 }}
-            color="blue"
+            color="green"
             size="header"
             section="BSIT 1-9"
             receiver="Jornales"
@@ -89,7 +89,7 @@ const About = () => {
           <MotionMC
             initial={{ scale: 0, rotate: 20 }}
             whileInView={{ scale: 1, rotate: 0 }}
-            color="pink"
+            color="blue"
             size="header"
             section="BSIT 1-4"
             receiver="Carl"
