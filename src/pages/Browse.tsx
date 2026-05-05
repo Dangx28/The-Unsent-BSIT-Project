@@ -31,7 +31,7 @@ const Browse = () => {
     setButtonPop(false);
     const q0 = query(
       collection(db, "messages"),
-      where("lowerName", "==", searchName),
+      where("lowerName", 'array-contains', searchName),
       orderBy("createdAt", "desc"),
     );
     const specificDoc = await getDocs(q0);
